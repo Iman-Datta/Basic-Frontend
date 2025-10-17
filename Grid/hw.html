@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Form Grid Example</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-areas:
+          "header header"
+          "sidebar content"
+          "footer footer";
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: auto 1fr auto;
+        gap: 10px;
+        min-height: 100vh;
+      }
+
+      header {
+        grid-area: header;
+        background: lightblue;
+        padding: 10px;
+      }
+
+      aside {
+        grid-area: sidebar;
+        background: lightgray;
+        padding: 10px;
+      }
+
+      main {
+        grid-area: content;
+        background: #f9f9f9;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      footer {
+        grid-area: footer;
+        background: lightblue;
+        padding: 10px;
+        text-align: center;
+      }
+
+      /* .text_center{
+        text-align: center;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <header>
+        <h2>Student Details</h2>
+      </header>
+      <aside>
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </aside>
+      <main>
+        <form>
+          <h2>Student Details Form</h2>
+
+          <label>First Name:</label><br />
+          <input type="text" name="firstName" /><br /><br />
+
+          <label>Last Name:</label><br />
+          <input type="text" name="lastName" /><br /><br />
+
+          <label>Age:</label><br />
+          <input type="number" name="age" /><br /><br />
+
+          <label>Gender:</label><br />
+          <input type="radio" name="gender" value="Male" /> Male
+          <input type="radio" name="gender" value="Female" /> Female <br /><br />
+
+          <label>Course:</label><br />
+          <select name="course">
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="ME">ME</option>
+          </select><br /><br />
+
+          <button type="submit">Submit</button>
+          <!-- <h3 class="text_center">Iman</h3> -->
+        </form>
+      </main>
+      <footer>Student Website</footer>
+    </div>
+  </body>
+</html>

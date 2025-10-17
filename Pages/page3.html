@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 3</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "left main right"
+          "footer footer footer";
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: auto 1fr auto;
+        gap: 10px;
+        min-height: 100vh;
+      }
+
+      header {
+        grid-area: header;
+        background: #003366;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 20px;
+      }
+
+      aside.left {
+        grid-area: left;
+        background: #f0e6d2;
+        padding: 20px;
+      }
+
+      aside.right {
+        grid-area: right;
+        background: #d2f0e6;
+        padding: 20px;
+      }
+
+      main {
+        grid-area: main;
+        background: #e6f7ff;
+        padding: 20px;
+      }
+
+      footer {
+        grid-area: footer;
+        background: #003366;
+        color: white;
+        text-align: center;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <header>
+        <h2>Header</h2>
+      </header>
+
+      <aside class="left">
+        <h3>Left Sidebar</h3>
+      </aside>
+
+      <main>
+        <h2>Main Content</h2>
+      </main>
+
+      <aside class="right">
+        <h3>Right Sidebar</h3>
+      </aside>
+
+      <footer>
+        <h2>Footer</h2>
+      </footer>
+    </div>
+  </body>
+</html>

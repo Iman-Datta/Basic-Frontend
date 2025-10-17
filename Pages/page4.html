@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>web1</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: rgb(32, 39, 179);
+      }
+
+      header {
+        padding: 20px;
+        background: rgb(42, 32, 179);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        background: black;
+        padding: 10px 10px;
+      }
+
+      nav h1 {
+        margin-right: auto;
+        color: white;
+      }
+
+      nav a {
+        margin-right: 30px;
+        text-decoration: none;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        text-decoration: none;
+        color: rgb(110, 110, 238);
+      }
+      .navbar a:hover {
+        background: #0839b7;
+      }
+
+      .dropdown {
+        display: inline-block;
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background: #ffffff;
+        min-width: 160px;
+        z-index: 1;
+        text-align: left;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 12px 16px;
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+      }
+
+      .dropdown-content a:hover {
+        background: white;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      main {
+        padding: 20px;
+        color: white;
+        min-height: 100vh;
+      }
+
+      .centerNav {
+        text-align: center;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="centerNav">
+        <nav>
+          <h1>Company</h1>
+          <div class="navbar">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <div class="dropdown">
+              <a href="#">Gallery ▾</a>
+              <div class="dropdown-content">
+                <a href="#">2019</a>
+                <a href="#">2018</a>
+                <a href="#">2017</a>
+              </div>
+            </div>
+            <a href="#">Contact</a>
+            <a href="#">Others▾</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main></main>
+  </body>
+</html>

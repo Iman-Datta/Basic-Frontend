@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopper Demo</title>
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+      html,body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      main {
+        flex: 1;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      header {
+        background-color: lightblue;
+        padding: 10px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand img {
+        height: 50px;
+        width: auto;
+        border-radius: 6px;
+      }
+
+      nav {
+        display: flex;
+        gap: 20px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: rgba(82, 32, 173, 0.87);
+        font-weight: bold;
+        transition: color 0.2s ease-in-out;
+      }
+
+      nav a:hover {
+        color: darkred;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .btn_login {
+        padding: 6px 14px;
+        border: none;
+        background-color: darkred;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+      }
+
+      .btn_login:hover {
+        background-color: crimson;
+      }
+
+      .cart {
+        position: relative;
+        font-size: 28px;
+        color: darkred;
+        cursor: pointer;
+      }
+
+      .cart span {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: red;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 50%;
+      }
+
+      main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px;
+        flex-wrap: wrap;
+        background: #f8f9fa;
+      }
+
+      .text {
+        max-width: 50%;
+        min-width: 300px;
+      }
+
+      main h3 {
+        font-size: 22px;
+        color: gray;
+      }
+
+      main h1 {
+        font-size: 48px;
+        margin: 10px 0;
+      }
+
+      main h1 strong {
+        color: darkred;
+      }
+
+      main img {
+        max-width: 320px;
+        border-radius: 10px;
+      }
+
+      footer {
+        background: #222;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/34/34627.png"
+          alt="logo" />
+        <h2>SHOPPER</h2>
+      </div>
+
+      <nav>
+        <a href="#">Shop</a>
+        <a href="#">Man</a>
+        <a href="#">Woman</a>
+        <a href="#">Kids</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn_login">Log in</button>
+        <div class="cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span>2</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="text">
+        <h3>New arrivals only</h3>
+        <h1><strong>New</strong></h1>
+        <br />
+        <h1>for <br />everyone</h1>
+      </div>
+      <div>
+        <img
+          src="https://img.freepik.com/free-photo/portrait-beautiful-smiling-woman_23-2149118645.jpg"
+          alt="fashion model" />
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Shopper. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

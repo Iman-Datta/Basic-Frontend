@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Landing Page</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 20px;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #ff6347;
+      border-radius: 5px;
+    }
+
+    /* Dropdown */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.9);
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    nav ul li ul li a {
+      padding: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Parallax sections */
+    .parallax {
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px black;
+    }
+
+    .p1 { background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80'); }
+    .p2 { background-image: url('https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1920&q=80'); }
+    .p3 { background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1920&q=80'); }
+
+    /* Content Sections */
+    .content {
+      padding: 80px 20px;
+      text-align: center;
+      background: #f8f9fa;
+    }
+
+    .content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+      position: relative;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .item h3 {
+      margin: 10px 0;
+      color: #ff6347;
+    }
+
+    .item p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* Animation for text reveal */
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: slideIn 1s ease forwards;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">FoodieHub</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a>
+        <ul>
+          <li><a href="#starters">Starters</a></li>
+          <li><a href="#mains">Main Course</a></li>
+          <li><a href="#desserts">Desserts</a></li>
+        </ul>
+      </li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Parallax Hero -->
+  <div class="parallax p1" id="home">
+    Welcome to FoodieHub
+  </div>
+
+  <!-- Menu Section -->
+  <div class="content" id="menu">
+    <h2 class="animate">Our Menu</h2>
+    <div class="menu-items">
+      <div class="item animate" id="starters">
+        <img src="https://images.unsplash.com/photo-1617196039897-7b8d41a2b8f8?auto=format&fit=crop&w=800&q=80" alt="Starter">
+        <h3>Bruschetta</h3>
+        <p>Toasted bread topped with fresh tomatoes, basil, and olive oil.</p>
+      </div>
+      <div class="item animate" id="mains">
+        <img src="https://images.unsplash.com/photo-1603079845392-4d41f99db3e1?auto=format&fit=crop&w=800&q=80" alt="Main Course">
+        <h3>Grilled Salmon</h3>
+        <p>Perfectly grilled salmon served with lemon butter sauce and veggies.</p>
+      </div>
+      <div class="item animate" id="desserts">
+        <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=800&q=80" alt="Dessert">
+        <h3>Chocolate Lava Cake</h3>
+        <p>Rich chocolate cake with a gooey molten center, served with ice cream.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Another Parallax -->
+  <div class="parallax p2">
+    Fresh • Delicious • Authentic
+  </div>
+
+  <!-- About Section -->
+  <div class="content" id="about">
+    <h2 class="animate">About Us</h2>
+    <p>At FoodieHub, we believe food is an experience. Our chefs craft dishes with love, using only the freshest ingredients to give you flavors that linger.</p>
+  </div>
+
+  <!-- Another Parallax -->
+  <div class="parallax p3">
+    Taste the Difference
+  </div>
+
+  <!-- Contact -->
+  <div class="content" id="contact">
+    <h2 class="animate">Contact Us</h2>
+    <p>123 Food Street, Kolkata</p>
+    <p> +91 9876543210</p>
+    <p>dattaiman56@gmail.com</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 FoodieHub. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
