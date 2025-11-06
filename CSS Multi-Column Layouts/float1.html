@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Float and Clear Example</title>
+    <style>
+      .container {
+        width: 600px;
+        border: 2px solid #333;
+        padding: 10px;
+      }
+      img {
+        float: left; /* pushes image to left side */
+        width: 150px;
+        margin: 10px;
+      }
+      p {
+        text-align: justify;
+      }
+      .footer {
+        clear: both; /* stops floating from affecting footer */
+        background: lightgray;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="https://via.placeholder.com/150" alt="sample" />
+      <p>
+        The float property allows text and inline elements to wrap around an
+        element, like this image. This technique was once used for creating
+        entire page layouts before Flexbox and Grid. The clear property ensures
+        that following elements (like footers) don’t overlap floating items.
+      </p>
+      <div class="footer">Footer (cleared below the image)</div>
+    </div>
+  </body>
+</html>

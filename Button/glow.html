@@ -8,6 +8,7 @@
       body {
         margin: 0;
         padding: 0;
+        padding-top: 100px;
         font-family: monospace;
         background: linear-gradient(180deg, #00111a, #004466);
         height: 100vh;
@@ -20,7 +21,7 @@
       }
 
       h1 {
-        font-size: 2em; 
+        font-size: 2em;
         text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         margin-bottom: 50px;
       }
@@ -46,17 +47,92 @@
       }
 
       .footer {
-        position: absolute;
-        bottom: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #002233;
+        color: #aeefff;
+        text-align: center;
+        padding: 10px 0;
         font-size: 0.8em;
-        opacity: 0.6;
+        opacity: 0.8;
+        box-sizing: border-box;
+      }
+
+      .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #002233;
+        padding: 10px 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .logo {
+        color: #00ffff;
+        font-size: 2.2em;
+        font-weight: bold;
+        margin-left: 20px;
+      }
+
+      .links {
+        display: flex;
+      }
+
+      .links a {
+        color: #aeefff;
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 0 15px;
+      }
+
+      .links a:hover {
+        color: #00ffff;
+      }
+
+      .login {
+        background: transparent;
+        border: 1px solid #00ffff;
+        color: #00ffff;
+        padding: 8px 20px;
+        cursor: pointer;
+        margin-left: 20px;
+      }
+      .tagline {
+        color: #aeefff;
+        font-size: 1.1em;
+        margin-bottom: 20px;
       }
     </style>
   </head>
+
   <body>
-    <h1>GALAXY QUEST</h1>
-    <button>Start Game</button>
-    <button>Options</button>
-    <div class="footer">© 2025 Anisoft Games</div>
+    <header>
+      <nav class="navbar">
+        <div class="logo">GALAXY QUEST</div>
+        <div class="links">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Story</a>
+          <a href="#">Contact</a>
+        </div>
+        <button class="login">Login</button>
+      </nav>
+    </header>
+    <main>
+      <h1>GALAXY QUEST</h1>
+      <button>Start Game</button>
+      <button>Options</button>
+      <p class="tagline">
+        Embark on an epic mission to explore the stars and protect the galaxy
+      </p>
+    </main>
+    <footer>
+      <div class="footer">© 2025 Anisoft Games</div>
+    </footer>
   </body>
 </html>

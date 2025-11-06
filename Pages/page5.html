@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5fbfd;
+      }
+      .navbar {
+        background-color: #ff715b;
+        padding: 15px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+      }
+      .navbar .logo {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+      .navbar ul li {
+        margin: 0 15px;
+      }
+      .navbar ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+      }
+      .navbar input {
+        padding: 6px 10px;
+        border: none;
+        border-radius: 4px;
+        outline: none;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 80px 20px;
+      }
+      .hero h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 30px;
+      }
+      .hero button {
+        background-color: #19a7a7;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .hero button:hover {
+        background-color: #128383;
+      }
+
+      .features {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 50px 20px;
+        flex-wrap: wrap;
+      }
+      .card {
+        background-color: white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 30px;
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card h3 {
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">Landing Page</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Dropdown</a></li>
+      </ul>
+      <input type="text" placeholder="Search" />
+    </div>
+
+    <div class="hero">
+      <h1>Welcome to Our Website</h1>
+      <p>Your go-to platform for amazing features.</p>
+      <button>Get Started</button>
+    </div>
+
+    <div class="features">
+      <div class="card">
+        <h3>Feature 1</h3>
+        <p>Detail about feature 1.</p>
+      </div>
+      <div class="card">
+        <h3>Feature 2</h3>
+        <p>Detail about feature 2.</p>
+      </div>
+      <div class="card">
+        <h3>Feature 3</h3>
+        <p>Detail about feature 3.</p>
+      </div>
+    </div>
+  </body>
+</html>
