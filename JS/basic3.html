@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Checker</title>
+</head>
+<body>
+
+  <input type="text" id="sentence" placeholder="Type a sentence here">
+  <button id="checkBtn">Check</button>
+
+  <p id="output"></p>
+
+  <script>
+    const sentenceInput = document.getElementById("sentence");
+    const checkBtn = document.getElementById("checkBtn");
+    const outputDiv = document.getElementById("output");
+
+    checkBtn.addEventListener("click", function () {
+        const sentence = sentenceInput.value.trim();
+        const words = sentence.split(" ").filter(word => word !== "");
+
+        outputDiv.innerText ="Number of words: " + words.length + "\nWords: " + words.join(", ");
+    });
+  </script>
+
+</body>
+</html>

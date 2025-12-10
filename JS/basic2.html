@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scores</title>
+</head>
+<body>
+
+<div id="output"></div>
+<button id="filterBtn">Show High Scores</button>
+
+<script>
+    let scores = [34, 78, 90, 55, 88, 42, 99];
+
+    const outputDiv = document.getElementById("output");
+    const filterBtn = document.getElementById("filterBtn");
+
+    outputDiv.innerText = "Scores: " + scores.join(", ");
+
+    filterBtn.addEventListener("click", function () {
+        let highScores = scores.filter(score => score >= 60);
+        outputDiv.innerText = "High Scores: " + highScores.join(", ");
+    });
+</script>
+
+</body>
+</html>
