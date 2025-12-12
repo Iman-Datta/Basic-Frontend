@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Shopping Cart Total</title>
-<style>
-body{font-family:Arial;margin:30px;}
-#total{font-weight:bold;margin-top:10px;}
-</style>
-</head>
-<body>
+  <head>
+    <title>Shopping Cart Total</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 30px;
+      }
+      #total {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Shopping Cart</h2>
 
-<h2>Shopping Cart</h2>
+    <ul id="items"></ul>
+    <button id="btn">Calculate Total</button>
 
-<ul id="items"></ul>
-<button id="btn">Calculate Total</button>
+    <p id="total"></p>
 
-<p id="total"></p>
+    <script>
+      let cart = [199, 499, 120, 250]; // prices
 
-<script>
-let cart = [199, 499, 120, 250]; // prices
+      // display items
+      items.innerHTML = cart.map((p) => "<li>₹" + p + "</li>").join("");
 
-// display items
-items.innerHTML = cart.map(p => "<li>₹" + p + "</li>").join("");
-
-btn.addEventListener("click", () => {
-    let sum = 0;
-    for(let i = 0; i < cart.length; i++){
-        sum += cart[i];
-    }
-    total.textContent = "Total Amount: ₹" + sum;
-});
-</script>
-
-</body>
+      btn.addEventListener("click", () => {
+        let sum = 0;
+        for (let i = 0; i < cart.length; i++) {
+          sum += cart[i];
+        }
+        total.textContent = "Total Amount: ₹" + sum;
+      });
+    </script>
+  </body>
 </html>
