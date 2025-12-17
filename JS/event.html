@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Events Demo</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      #box {
+        width: 150px;
+        height: 150px;
+        background: lightblue;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 150px;
+        border-radius: 10px;
+        transition: 0.3s;
+      }
+
+      #btn {
+        padding: 10px 20px;
+        background: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      #city {
+        margin-top: 20px;
+        padding: 8px;
+      }
+
+      #nameInput {
+        padding: 8px;
+        margin-top: 20px;
+        width: 200px;
+      }
+
+      #formSection {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Events Example</h1>
+
+    <!-- Click event -->
+    <button id="btn">Click Me</button>
+    <p id="clickMsg"></p>
+
+    <!-- Mouse events -->
+    <div id="box">Hover Me</div>
+    <p id="hoverMsg"></p>
+
+    <!-- Keydown event -->
+    <input type="text" id="nameInput" placeholder="Type something..." />
+    <p id="keyMsg"></p>
+
+    <!-- Change event -->
+    <select id="city">
+      <option value="">Select City</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Kolkata">Kolkata</option>
+    </select>
+    <p id="cityMsg"></p>
+
+    <!-- Submit event -->
+    <div id="formSection">
+      <form id="myForm">
+        <input type="text" id="email" placeholder="Enter Email" required />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="submitMsg"></p>
+    </div>
+
+    <script>
+      // Page Load Event
+      window.addEventListener("load", function () {
+        console.log("Page loaded successfully");
+      });
+
+      // Click Event
+      document.getElementById("btn").addEventListener("click", function () {
+        document.getElementById("clickMsg").textContent = "Button was clicked!";
+      });
+
+      // Mouse Events
+      let box = document.getElementById("box");
+
+      box.addEventListener("mouseover", function () {
+        box.style.background = "orange";
+        document.getElementById("hoverMsg").textContent =
+          "Mouse is over the box";
+      });
+
+      box.addEventListener("mouseout", function () {
+        box.style.background = "lightblue";
+        document.getElementById("hoverMsg").textContent = "Mouse left the box";
+      });
+
+      // Keydown Event
+      document
+        .getElementById("nameInput")
+        .addEventListene("keydown", function () {
+          document.getElementById("keyMsg").textContent = "You pressed a key!";
+        });
+
+      // Change Event
+      document.getElementById("city").addEventListener("change", function () {
+        let selectedCity = this.value;
+        document.getElementById("cityMsg").textContent =
+          "You selected: " + selectedCity;
+      });
+
+      // Form Submit Event
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // prevent page refresh
+          let email = document.getElementById("email").value;
+          document.getElementById("submitMsg").textContent =
+            "Form submitted with email: " + email;
+        });
+    </script>
+  </body>
+</html>

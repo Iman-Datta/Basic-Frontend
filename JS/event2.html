@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #eef2f3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 90%;
+        max-width: 450px;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #444;
+      }
+
+      .statusBox {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background: #d5e8ff;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Page Load Event</h1>
+      <p>This message updates when the page finishes loading.</p>
+      <div class="statusBox" id="statusBox">Loading...</div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        document.getElementById("statusBox").innerText = "Page fully loaded";
+        console.log("Page fully loaded");
+      });
+    </script>
+  </body>
+</html>
