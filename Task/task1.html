@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Practice</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>1. Add Items to a List</h3>
+    <input type="text" id="itemInput" placeholder="Enter item" />
+    <button id="addElementBTN">Add</button>
+    <ul id="itemList"></ul>
+
+    <hr />
+
+    <h3>2. Display Array Elements</h3>
+    <button id="showColorsBtn">Show Colors</button>
+    <p id="colorOutput"></p>
+
+    <hr />
+
+    <h3>3. Remove Last Element</h3>
+    <button id="removeBtn">Remove Last Number</button>
+    <p id="numberOutput"></p>
+
+    <hr />
+
+    <h3>4. Count Array Elements</h3>
+    <input type="text" id="countInput" placeholder="Enter value" />
+    <button id="addCountBtn">Add Item</button>
+    <p>Total Items: <span id="countDisplay">0</span></p>
+
+    <hr />
+
+    <h3>5. Change Background Color</h3>
+    <button id="bgBtn">Change Background</button>
+
+    <script>
+      // 1st problem
+      let items = [];
+
+      document.getElementById("addElementBTN").addEventListener("click", function () {
+          const input = document.getElementById("itemInput");
+          const value = input.value.trim();
+
+          items.push(value);
+
+          const list = document.getElementById("itemList");
+
+          items.forEach(function (item) {
+            const li = document.createElement("li");
+            li.innerText = item;
+            list.appendChild(li);
+          });
+
+          input.value = "";
+        });
+
+      const colors = ["Red", "Blue", "Green", "Yellow", "Pink"];
+
+      // 2nd problem
+      document.getElementById("showColorsBtn").addEventListener("click", function () {
+          const output = document.getElementById("colorOutput");
+          output.innerText = colors.join(", ");
+        });
+
+      // 3rd problem
+      let numbers = [10, 20, 30, 40, 50];
+      const output = document.getElementById("numberOutput");
+      output.innerText = numbers.join(", ");
+
+      document.getElementById("removeBtn").addEventListener("click", function () {
+          numbers.pop();
+          output.innerText = numbers.join(", ");
+        });
+
+      // 4th problem
+      let countArr = [];
+
+      document.getElementById("addCountBtn").addEventListener("click", function () {
+          const input = document.getElementById("countInput");
+          const value = input.value.trim();
+
+          if (value === "") return;
+
+          countArr.push(value);
+
+          document.getElementById("countDisplay").innerText = countArr.length;
+
+          input.value = "";
+        });
+
+      // 5th problem
+      const bgColors = ["blue", "green", "red", "yellow"];
+      let index = 0;
+
+      document.getElementById("bgBtn").addEventListener("click", function () {
+        document.body.style.backgroundColor = bgColors[index];
+
+        index++;
+
+        if (index === bgColors.length) {
+          index = 0;
+        }
+      });
+    </script>
+  </body>
+</html>
