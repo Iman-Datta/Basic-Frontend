@@ -1,113 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Array Practice</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
+<head>
+  <meta charset="UTF-8" />
+  <title>Array Practice</title>
+
+  <style>
+    /* ===== PAGE SETUP ===== */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;   /* horizontal center */
+      align-items: flex-start;   /* top theke thoda niche */
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* ===== EACH BOX ===== */
+    .box {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+      flex: 1 1 300px;
+      max-width: 32%;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    input {
+      padding: 8px;
+      width: 220px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input:focus {
+      border-color: #0080ff;
+      outline: none;
+    }
+
+    button {
+      padding: 8px 14px;
+      margin-left: 6px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      margin-bottom: 6px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    span {
+      color: #007bff;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .box {
+        max-width: 48%;
       }
-    </style>
-  </head>
-  <body>
-    <h3>1. Add Items to a List</h3>
-    <input type="text" id="itemInput" placeholder="Enter item" />
-    <button id="addElementBTN">Add</button>
-    <ul id="itemList"></ul>
+    }
 
-    <hr />
+    @media (max-width: 600px) {
+      .box {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
 
-    <h3>2. Display Array Elements</h3>
-    <button id="showColorsBtn">Show Colors</button>
-    <p id="colorOutput"></p>
+<body>
 
-    <hr />
+  <div class="container">
 
-    <h3>3. Remove Last Element</h3>
-    <button id="removeBtn">Remove Last Number</button>
-    <p id="numberOutput"></p>
+    <!-- 1 -->
+    <div class="box">
+      <h3>1. Add Items to a List</h3>
+      <input type="text" id="itemInput" placeholder="Enter item" />
+      <button id="addElementBTN">Add</button>
+      <ul id="itemList"></ul>
+    </div>
 
-    <hr />
+    <!-- 2 -->
+    <div class="box">
+      <h3>2. Display Array Elements</h3>
+      <button id="showColorsBtn">Show Colors</button>
+      <p id="colorOutput"></p>
+    </div>
 
-    <h3>4. Count Array Elements</h3>
-    <input type="text" id="countInput" placeholder="Enter value" />
-    <button id="addCountBtn">Add Item</button>
-    <p>Total Items: <span id="countDisplay">0</span></p>
+    <!-- 3 -->
+    <div class="box">
+      <h3>3. Remove Last Element</h3>
+      <button id="removeBtn">Remove Last Number</button>
+      <p id="numberOutput"></p>
+    </div>
 
-    <hr />
+    <!-- 4 -->
+    <div class="box">
+      <h3>4. Count Array Elements</h3>
+      <input type="text" id="countInput" placeholder="Enter value" />
+      <button id="addCountBtn">Add Item</button>
+      <p>Total Items: <span id="countDisplay">0</span></p>
+    </div>
 
-    <h3>5. Change Background Color</h3>
-    <button id="bgBtn">Change Background</button>
+    <!-- 5 -->
+    <div class="box">
+      <h3>5. Change Background Color</h3>
+      <button id="bgBtn">Change Background</button>
+    </div>
 
-    <script>
-      // 1st problem
-      let items = [];
+  </div>
 
-      document.getElementById("addElementBTN").addEventListener("click", function () {
-          const input = document.getElementById("itemInput");
-          const value = input.value.trim();
+  <script>
+    /* ===== 1 ===== */
+    let items = [];
+    document.getElementById("addElementBTN").addEventListener("click", function () {
+      const input = document.getElementById("itemInput");
+      const value = input.value.trim();
+      if (value === "") return;
 
-          items.push(value);
+      items.push(value);
 
-          const list = document.getElementById("itemList");
+      const li = document.createElement("li");
+      li.innerText = value;
+      document.getElementById("itemList").appendChild(li);
 
-          items.forEach(function (item) {
-            const li = document.createElement("li");
-            li.innerText = item;
-            list.appendChild(li);
-          });
+      input.value = "";
+    });
 
-          input.value = "";
-        });
+    /* ===== 2 ===== */
+    const colors = ["Red", "Blue", "Green", "Yellow", "Pink"];
+    document.getElementById("showColorsBtn").addEventListener("click", function () {
+      const output = document.getElementById("colorOutput");
+      output.innerHTML = "";
 
-      const colors = ["Red", "Blue", "Green", "Yellow", "Pink"];
-
-      // 2nd problem
-      document.getElementById("showColorsBtn").addEventListener("click", function () {
-          const output = document.getElementById("colorOutput");
-          output.innerText = colors.join(", ");
-        });
-
-      // 3rd problem
-      let numbers = [10, 20, 30, 40, 50];
-      const output = document.getElementById("numberOutput");
-      output.innerText = numbers.join(", ");
-
-      document.getElementById("removeBtn").addEventListener("click", function () {
-          numbers.pop();
-          output.innerText = numbers.join(", ");
-        });
-
-      // 4th problem
-      let countArr = [];
-
-      document.getElementById("addCountBtn").addEventListener("click", function () {
-          const input = document.getElementById("countInput");
-          const value = input.value.trim();
-
-          if (value === "") return;
-
-          countArr.push(value);
-
-          document.getElementById("countDisplay").innerText = countArr.length;
-
-          input.value = "";
-        });
-
-      // 5th problem
-      const bgColors = ["blue", "green", "red", "yellow"];
-      let index = 0;
-
-      document.getElementById("bgBtn").addEventListener("click", function () {
-        document.body.style.backgroundColor = bgColors[index];
-
-        index++;
-
-        if (index === bgColors.length) {
-          index = 0;
-        }
+      colors.forEach(function (color) {
+        const span = document.createElement("span");
+        span.innerText = color + " ";
+        span.style.color = color.toLowerCase();
+        output.appendChild(span);
       });
-    </script>
-  </body>
+    });
+
+    /* ===== 3 ===== */
+    let numbers = [10, 20, 30, 40, 50];
+    const numberOutput = document.getElementById("numberOutput");
+    numberOutput.innerText = numbers.join(", ");
+
+    document.getElementById("removeBtn").addEventListener("click", function () {
+      numbers.pop();
+      numberOutput.innerText = numbers.join(", ");
+    });
+
+    /* ===== 4 ===== */
+    let countArr = [];
+    document.getElementById("addCountBtn").addEventListener("click", function () {
+      const input = document.getElementById("countInput");
+      const value = input.value.trim();
+      if (value === "") return;
+
+      countArr.push(value);
+      document.getElementById("countDisplay").innerText = countArr.length;
+      input.value = "";
+    });
+
+    /* ===== 5 ===== */
+    const bgColors = ["blue", "green", "red", "yellow"];
+    let index = 0;
+
+    document.getElementById("bgBtn").addEventListener("click", function () {
+      document.body.style.backgroundColor = bgColors[index];
+      index++;
+
+      if (index === bgColors.length) {
+        index = 0;
+      }
+    });
+  </script>
+
+</body>
 </html>
