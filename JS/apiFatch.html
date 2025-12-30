@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>API Fetch – Single File</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .card {
+        background: white;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Details (API Fetch)</h1>
+    <button onclick="fetchData()">Load Data</button>
+    <div id="output"></div>
+    <script>
+      function fetchData() {
+        const apiURL = "https://jsonplaceholder.typicode.com/users";
+        fetch(apiURL)
+          .then((response) => response.json()).then((data) => {
+            let output = "";
+            data.forEach((user) => {
+              output += `
+                <div class="card">
+                <h3>${user.name}</h3>
+                <p>Email: ${user.email}</p>
+                <p>City: ${user.address.city}</p>
+                </div>
+                `;
+            });
+            document.getElementById("output").innerHTML = output;
+          })
+          .catch((error) => {
+            document.getElementById("output").innerHTML = "Error loading data";
+            console.log(error);
+          });
+      }
+    </script>
+  </body>
+</html>
