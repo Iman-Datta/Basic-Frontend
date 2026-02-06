@@ -12,6 +12,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/textdb");
 // Schema & Model
 const TextSchema = new mongoose.Schema({
   message: String,
+  name : String,
+  roll : Number,
+  sec : String,
 });
 const TextModel = mongoose.model("Text", TextSchema);
 
