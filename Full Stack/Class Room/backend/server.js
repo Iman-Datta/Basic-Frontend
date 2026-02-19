@@ -57,9 +57,18 @@ app.post("/tasks", async (req, res) => {
 // GET for all and filter
 app.get("/tasks", async (req, res) => {
   try {
-    const filter = req.query;
-    const tasks = await Task.find(filter).sort({ createdAt: -1 }); // .objects.all()
-    res.json(tasks);
+    const { fields, ...filter } = req.query;
+
+    let query = Task.find(filter).sort({ createdAt: -1 }); // Filtering
+
+    if (fields) {
+      const selectedFields = fields.split(",").join(" ");
+      query = query.select(selectedFields); // If specific fields are requested, apply field selection (projection)
+    }
+
+    const tasks = await query;
+
+    res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
