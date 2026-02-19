@@ -25,7 +25,7 @@ const taskSchema = new mongoose.Schema(
   {
     // Schema Definition Object
     taskname: { type: String, required: true },
-    subject: { type: String, required: true },
+    category: { type: String, required: true },
     deadline: { type: Date, required: true },
     status: { type: String, default: "Pending" },
   },
@@ -105,7 +105,7 @@ app.put("/tasks/:id", async (req, res) => {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    // Allowed fields to update & subject intentionally NOT updated
+    // Allowed fields to update & category intentionally NOT updated
     const { taskname, deadline, status } = req.body;
 
     if (taskname !== undefined) task.taskname = taskname;
