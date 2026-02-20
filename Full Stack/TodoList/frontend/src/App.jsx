@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
   const [taskName, setTaskName] = useState("");
@@ -31,16 +32,12 @@ function App() {
       await fetch("http://localhost:5000/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          taskName,
-          description,
-        }),
+        body: JSON.stringify({ taskName, description }),
       });
 
       setTaskName("");
       setDescription("");
       fetchTasks();
-      alert("Task Saved");
     } catch {
       alert("Error saving task");
     }
@@ -53,7 +50,6 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "Completed" }),
       });
-
       fetchTasks();
     } catch {
       alert("Error updating task");
@@ -67,7 +63,6 @@ function App() {
       await fetch(`http://localhost:5000/tasks/${id}`, {
         method: "DELETE",
       });
-
       fetchTasks();
     } catch {
       alert("Error deleting task");
@@ -75,82 +70,71 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "40px" }}>
+    <div className="container">
       <h2>Task Manager</h2>
 
-      <form onSubmit={addTask}>
+      <form onSubmit={addTask} className="task-form">
         <input
           type="text"
           placeholder="Task Name"
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
-          required
         />
-
-        <br />
-        <br />
 
         <input
           type="text"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
         />
-
-        <br />
-        <br />
 
         <button type="submit">Add Task</button>
       </form>
 
-      <br />
+      {loading && <p className="loading">Loading...</p>}
 
-      {loading && <h3>Loading...</h3>}
+      <div className="task-list">
+        {tasks.map((t) => (
+          <div
+            key={t._id}
+            className={`task-card ${
+              t.status === "Completed" ? "completed" : ""
+            }`}
+          >
+            <div>
+              <h3>{t.taskName}</h3>
+              <p>{t.description}</p>
+              <small>
+                {t.createdDate
+                  ? new Date(t.createdDate).toLocaleString()
+                  : "N/A"}
+              </small>
+            </div>
 
-      <table border="1" cellPadding="10">
-        <thead>
-          <tr>
-            <th>Task Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Created Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {tasks.map((t) => (
-            <tr
-              key={t._id}
-              style={{
-                textDecoration:
-                  t.status === "Completed" ? "line-through" : "none",
-                backgroundColor: t.status === "Completed" ? "#d4ffd4" : "white",
-              }}
-            >
-              <td>{t.taskName}</td>
-              <td>{t.description}</td>
-              <td>{t.status}</td>
-              <td>
-                {t.createdAt ? new Date(t.createdAt).toLocaleString() : "N/A"}
-              </td>
-              <td>
-                {t.status !== "Completed" && (
-                  <button onClick={() => completeTask(t._id)}>Complete</button>
-                )}
-
+            <div className="actions">
+              {t.status !== "Completed" && (
                 <button
-                  onClick={() => deleteTask(t._id)}
-                  style={{ marginLeft: "10px" }}
+                  className="complete-btn"
+                  onClick={() => completeTask(t._id)}
                 >
-                  Delete
+                  Complete
                 </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              )}
+
+              <button
+                className="delete-btn"
+                onClick={() => deleteTask(t._id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {tasks.length === 0 && !loading && (
+        <p className="empty">No tasks yet. Add one!</p>
+      )}
     </div>
   );
 }

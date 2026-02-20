@@ -1,60 +1,65 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/taskdb").then(() => console.log("MongoDB Connected")).catch((err) => console.log(err));
+// Connect MongoDB
+mongoose
+  .connect("mongodb://127.0.0.1:27017/taskdb")
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
+// Schema
 const TaskSchema = new mongoose.Schema({
-  taskName: { type: String, required: true },
-  description: { type: String, required: true },
-  status: { type: String, default: "Pending" },
-  createdDate: { type: Date, default: Date.now },
+  taskName: String,
+  description: String,
+  status: String,
 });
 
+// Model
 const TaskModel = mongoose.model("Task", TaskSchema);
 
+// CREATE
 app.post("/tasks", async (req, res) => {
   try {
-    const newTask = await TaskModel.create({
-      taskName: req.body.taskName,
-      description: req.body.description,
-    });
-    res.status(201).json(newTask);
+    const task = await TaskModel.create(req.body);
+    res.json(task);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.json({ message: error.message });
   }
 });
 
+// READ
 app.get("/tasks", async (req, res) => {
   try {
-    const tasks = await TaskModel.find().sort({ createdDate: -1 });
+    const tasks = await TaskModel.find();
     res.json(tasks);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.json({ message: error.message });
   }
 });
 
+// UPDATE
 app.put("/tasks/:id", async (req, res) => {
   try {
-    await TaskModel.findByIdAndUpdate(req.params.id, {
-      status: req.body.status,
-    });
+    await TaskModel.findByIdAndUpdate(req.params.id, req.body);
     res.json({ message: "Task Updated" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.json({ message: error.message });
   }
 });
 
+// DELETE
 app.delete("/tasks/:id", async (req, res) => {
   try {
     await TaskModel.findByIdAndDelete(req.params.id);
     res.json({ message: "Task Deleted" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.json({ message: error.message });
   }
 });
 
